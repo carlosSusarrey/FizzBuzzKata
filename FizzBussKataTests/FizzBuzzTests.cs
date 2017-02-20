@@ -69,5 +69,14 @@ namespace FizzBussKataTests
         {
             FizzBuzz.ResultOf(number).Should().Be("Buzz");
         }
+
+        [Theory]
+        [InlineData(51)]
+        [InlineData(57)]
+        [InlineData(54)]
+        public void A_number_is_a_FizzBuzz_if_it_contains_both_3_and_5(int number)
+        {
+            FizzBuzz.ResultOf(number).Should().Be("FizzBuzz");
+        }
     }
 }

@@ -6,22 +6,25 @@
         {
             var builtResult = "";
             var nonEntered = true;
-            if (number % 3 == 0 || number.ToString().Contains("3"))
-            {
-                builtResult += "Fizz";
-                nonEntered = false;
-            }
-
-            if (number % 5 == 0 || number.ToString().Contains("5"))
-            {
-                builtResult += "Buzz";
-                nonEntered = false;
-            }
+            
+            builtResult += BuildResult(number, ref nonEntered, 3, "Fizz");
+            builtResult += BuildResult(number, ref nonEntered, 5, "Buzz");
 
             if (nonEntered)
             {
                 builtResult = number.ToString();
             }
+            return builtResult;
+        }
+
+        private static string BuildResult(int number, ref bool nonFlaged, int checkValue, string word)
+        {
+            if (number % checkValue != 0 && !number.ToString().Contains(checkValue.ToString()))
+            {
+                return null;
+            }
+            var builtResult = word;
+            nonFlaged = false;
             return builtResult;
         }
     }
